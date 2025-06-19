@@ -7,7 +7,7 @@ class MyTabView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
-      length: 9,
+      length: 3,
       child: Scaffold(
         appBar: AppBar(
           backgroundColor: Colors.teal,
@@ -21,19 +21,19 @@ class MyTabView extends StatelessWidget {
             SizedBox(width: 12),
           ],
           bottom: TabBar(
-            tabAlignment: TabAlignment.center,
+            // tabAlignment: TabAlignment.center,
             onTap: (n){
               debugPrint(n.toString());
             },
             splashBorderRadius: BorderRadius.circular(0),
             splashFactory: NoSplash.splashFactory,
-            isScrollable: true,
+            // isScrollable: true,
             labelColor: Colors.white,
             unselectedLabelColor: Colors.black,
             labelStyle: TextStyle(fontSize: 24),
             unselectedLabelStyle: TextStyle(fontSize: 18),
             indicatorColor: Colors.white,
-            indicatorSize: TabBarIndicatorSize.label,
+            // indicatorSize: TabBarIndicatorSize.tab,
             dividerColor: Colors.transparent,
             dividerHeight: 0,
             indicatorAnimation: TabIndicatorAnimation.elastic,
@@ -49,12 +49,7 @@ class MyTabView extends StatelessWidget {
               Tab(icon: Icon(Icons.chat_outlined), text: "Chat"),
               Tab(icon: Icon(Icons.stacked_bar_chart_outlined), text: "Status"),
               Tab(icon: Icon(Icons.phone_outlined), text: "Calls"),
-              Tab(icon: Icon(Icons.chat_outlined), text: "Chat"),
-              Tab(icon: Icon(Icons.stacked_bar_chart_outlined), text: "Status"),
-              Tab(icon: Icon(Icons.phone_outlined), text: "Calls"),
-              Tab(icon: Icon(Icons.chat_outlined), text: "Chat"),
-              Tab(icon: Icon(Icons.stacked_bar_chart_outlined), text: "Status"),
-              Tab(icon: Icon(Icons.phone_outlined), text: "Calls"),
+              
             ],
           ),
         ),
@@ -84,57 +79,7 @@ class MyTabView extends StatelessWidget {
               children: [
                 Icon(Icons.phone_outlined, size: 100),
                 SizedBox(width: 12),
-                Text("Status")
-              ],
-            ),
-            Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Icon(Icons.chat_outlined, size: 100),
-                SizedBox(width: 12),
-                Text("Chat")
-              ],
-            ),
-            Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-
-              children: [
-                Icon(Icons.stacked_bar_chart_outlined, size: 100),
-                SizedBox(width: 12),
-                Text("Status")
-              ],
-            ),
-            Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Icon(Icons.phone_outlined, size: 100),
-                SizedBox(width: 12),
-                Text("Status")
-              ],
-            ),
-            Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Icon(Icons.chat_outlined, size: 100),
-                SizedBox(width: 12),
-                Text("Chat")
-              ],
-            ),
-            Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-
-              children: [
-                Icon(Icons.stacked_bar_chart_outlined, size: 100),
-                SizedBox(width: 12),
-                Text("Status")
-              ],
-            ),
-            Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Icon(Icons.phone_outlined, size: 100),
-                SizedBox(width: 12),
-                Text("Status")
+                Text("Calls")
               ],
             ),
           ],

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:device_preview/device_preview.dart';
-import 'package:tab_bar_class/my_tab_view.dart';
+import 'package:tab_bar_class/custom_tab_view.dart';
 
 void main() {
-  runApp(MyApp());
-  // runApp(DevicePreview(builder: (context) => MyApp()));
+  // runApp(MyApp());
+  runApp(DevicePreview(builder: (context) => MyApp())); 
 }
 
 class MyApp extends StatelessWidget {
@@ -12,7 +12,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(debugShowCheckedModeBanner: false, home: MyTabView());
+    return MaterialApp(debugShowCheckedModeBanner: false, home: CustomTabView());
   }
 }
 
