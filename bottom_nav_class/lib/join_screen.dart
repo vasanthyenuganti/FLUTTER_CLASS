@@ -5,6 +5,7 @@ class JoinScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    debugPrint("Join Rebuild");
     return Scaffold(
       body: Center(child: Icon(Icons.meeting_room_outlined, color: Colors.green, size: 100)),
     );

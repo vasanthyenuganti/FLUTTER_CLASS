@@ -5,6 +5,7 @@ class ProfileScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    debugPrint("Profile Rebuild");
     return Scaffold(
       body: Center(child: Icon(Icons.person_outline_outlined, color: Colors.green, size: 100)),
     );

@@ -5,6 +5,7 @@ class EventScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    debugPrint("Events Rebuild");
     return Scaffold(
       body: Center(
         child: Icon(
