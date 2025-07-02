@@ -11,6 +11,7 @@ class _LoginPageState extends State<LoginPage> {
   final _key = GlobalKey<FormState>();
   final _emailCtrl = TextEditingController();
   final _passCtrl = TextEditingController();
+  bool _passVisible = false;
 
   // String? vlidateEmail(val){
 
@@ -72,22 +73,39 @@ class _LoginPageState extends State<LoginPage> {
                             border: OutlineInputBorder(),
                           ),
                         ),
-                        TextFormField(
-                          controller: _passCtrl,
-                          obscureText: true,
-                          validator: (val) {
-                            if (val!.isEmpty) {
-                              return "Please enter the password";
-                            } else if (!val.contains("@")) {
-                              return "please enter strong password";
-                            } else {
-                              return null;
-                            }
-                          },
-                          decoration: InputDecoration(
-                            labelText: "Password",
-                            // hintText: "",
-                            border: OutlineInputBorder(),
+                        Container(
+                          decoration: BoxDecoration(
+                            color: Colors.greenAccent,
+                            borderRadius: BorderRadius.circular(12)
+                          ),
+                          child: TextFormField(
+                            controller: _passCtrl,
+                            obscureText: !_passVisible,
+                            validator: (val) {
+                              if (val!.isEmpty) {
+                                return "Please enter the password";
+                              } else if (!val.contains("@")) {
+                                return "please enter strong password";
+                              } else {
+                                return null;
+                              }
+                            },
+                            decoration: InputDecoration(
+                              // labelText: "Password",
+                              // hintText: "",
+                              // border: OutlineInputBorder(),
+                              border: InputBorder.none,
+                              suffixIcon: GestureDetector(
+                                onTap: (){
+                                  setState(() {
+                                    _passVisible = !_passVisible;
+                                  });
+                                },
+                                child: Icon(
+                                  _passVisible ?
+                                  Icons.visibility_off_outlined : 
+                                  Icons.visibility_outlined)),
+                            ),
                           ),
                         ),
                         Align(
