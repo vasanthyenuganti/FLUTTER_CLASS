@@ -1,12 +1,20 @@
+import 'dart:io';
+
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:input_fields/my_check_box.dart';
 import 'package:input_fields/my_insta_screen.dart';
 import 'package:input_fields/my_slider.dart';
+import 'package:input_fields/my_switch.dart';
 import 'package:input_fields/palt_prod_widget.dart';
-// import 'flutter:device_preview/device_preview.dart';
+import 'package:device_preview/device_preview.dart';
 
 void main() {
-  runApp(const MainApp());
-  // runApp(DevicePreview(buidler: (ctx) => MainApp()));
+  if (kIsWeb) {
+    runApp(DevicePreview(builder: (BuildContext context) => MainApp()));
+  } else {
+    runApp(const MainApp());
+  }
 }
 
 class MainApp extends StatelessWidget {
@@ -32,6 +40,7 @@ class _MyHomeState extends State<MyHome> {
       appBar: AppBar(title: Text("Home"), actions: [Icon(Icons.person)]),
       body: SingleChildScrollView(
         child: Column(
+          spacing: 16,
           children: [
             Center(
               child: ElevatedButton(
@@ -44,7 +53,6 @@ class _MyHomeState extends State<MyHome> {
                 child: Text("Slider", style: TextStyle()),
               ),
             ),
-            SizedBox(height: 12),
             // SingleChildScrollView(
             //   scrollDirection : Axis.horizontal,
             //   child: Row(
@@ -53,18 +61,77 @@ class _MyHomeState extends State<MyHome> {
             //   ),
             // ),
             // GridView.count(crossAxisCount: 2, children: PlatProdWidget()),
-            GridView.count(
-              shrinkWrap: true,
-              childAspectRatio: .70,
-              mainAxisSpacing: 16,
-              crossAxisSpacing: 16,
-              padding: EdgeInsets.all(16),
-              crossAxisCount: 2,
-              children: List.filled(10, PlatProdWidget()),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder:
+                        (context) => Scaffold(
+                          appBar: AppBar(),
+                          body: GridView.count(
+                            shrinkWrap: true,
+                            childAspectRatio: .70,
+                            mainAxisSpacing: 16,
+                            crossAxisSpacing: 16,
+                            padding: EdgeInsets.all(16),
+                            crossAxisCount: 2,
+                            children: List.filled(10, PlatProdWidget()),
+                          ),
+                        ),
+                  ),
+                );
+              },
+              child: Text("Platify Grid", style: TextStyle()),
             ),
+            Center(
+              child: ElevatedButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => SwitchTask()),
+                  );
+                },
+                child: Text("Switch", style: TextStyle()),
+              ),
+            ),
+            Center(
+              child: ElevatedButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => MyCheckBoxTask()),
+                  );
+                },
+                child: Text("Check Box", style: TextStyle()),
+              ),
+            ),
+            Text(getPlatform(), style: TextStyle(fontSize: 64)),
           ],
         ),
       ),
     );
+  }
+
+  String getPlatform() {
+    if (kIsWeb) {
+      return "Web";
+    } else {
+      if (Platform.isAndroid) {
+        return "Android";
+      } else if (Platform.isIOS) {
+        return "IOS";
+      } else if (Platform.isMacOS) {
+        return "MacOS";
+      } else if (Platform.isWindows) {
+        return "WIN";
+      } else if (Platform.isFuchsia) {
+        return "Fuchsia";
+      } else if (Platform.isLinux) {
+        return "Linux";
+      } else {
+        return "None";
+      }
+    }
   }
 }
