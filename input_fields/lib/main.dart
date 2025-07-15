@@ -1,9 +1,10 @@
 import 'dart:io';
-
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:input_fields/my_check_box.dart';
+import 'package:input_fields/my_date_picker.dart';
 import 'package:input_fields/my_insta_screen.dart';
+import 'package:input_fields/my_radio_button.dart';
 import 'package:input_fields/my_slider.dart';
 import 'package:input_fields/my_switch.dart';
 import 'package:input_fields/palt_prod_widget.dart';
@@ -107,6 +108,28 @@ class _MyHomeState extends State<MyHome> {
               ),
             ),
             Text(getPlatform(), style: TextStyle(fontSize: 64)),
+            Center(
+              child: ElevatedButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => MyRadioButton()),
+                  );
+                },
+                child: Text("Radio Btn", style: TextStyle()),
+              ),
+            ),
+            Center(
+              child: ElevatedButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => MyDatePicker()),
+                  );
+                },
+                child: Text("Date Picker", style: TextStyle()),
+              ),
+            ),
           ],
         ),
       ),
