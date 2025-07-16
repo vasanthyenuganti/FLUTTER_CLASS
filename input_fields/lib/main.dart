@@ -3,10 +3,12 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:input_fields/my_check_box.dart';
 import 'package:input_fields/my_date_picker.dart';
+import 'package:input_fields/my_drop_down.dart';
 import 'package:input_fields/my_insta_screen.dart';
 import 'package:input_fields/my_radio_button.dart';
 import 'package:input_fields/my_slider.dart';
 import 'package:input_fields/my_switch.dart';
+import 'package:input_fields/my_time_picker.dart';
 import 'package:input_fields/palt_prod_widget.dart';
 import 'package:device_preview/device_preview.dart';
 
@@ -128,6 +130,28 @@ class _MyHomeState extends State<MyHome> {
                   );
                 },
                 child: Text("Date Picker", style: TextStyle()),
+              ),
+            ),
+            Center(
+              child: ElevatedButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => MyTimePicker()),
+                  );
+                },
+                child: Text("Time Picker", style: TextStyle()),
+              ),
+            ),
+            Center(
+              child: ElevatedButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => MyDropDown()),
+                  );
+                },
+                child: Text("Drop Down", style: TextStyle()),
               ),
             ),
           ],
