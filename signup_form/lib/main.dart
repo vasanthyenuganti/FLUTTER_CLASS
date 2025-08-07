@@ -1,9 +1,22 @@
 import 'package:flutter/material.dart';
-import 'package:signup_form/screens/users_screen.dart';
+import 'package:flutter/services.dart';
 import 'package:signup_form/widgets/custom_text_fileld.dart';
+import 'package:device_preview/device_preview.dart';
 
 void main() {
-  runApp(const MyApp());
+  WidgetsFlutterBinding.ensureInitialized();
+  SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitUp,
+    // DeviceOrientation.portraitDown,
+    // DeviceOrientation.landscapeLeft,
+    // DeviceOrientation.landscapeRight,
+  ]);
+  // if (kIsWeb) {
+  //   runApp(DevicePreview(builder: (context) => MyApp()));
+  // } else {
+  //   runApp(MyApp());
+  // }
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -17,7 +30,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
-      home: UsersScreen(),
+      home: SignUpScreen(),
     );
   }
 }
