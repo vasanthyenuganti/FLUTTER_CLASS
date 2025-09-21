@@ -1,5 +1,7 @@
 import 'dart:convert';
 
+import 'package:dog_api_cls/drop_img.dart';
+import 'package:dog_api_cls/grid_img.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:device_preview/device_preview.dart';
@@ -31,46 +33,32 @@ class MainApp extends StatefulWidget {
 }
 
 class _MainAppState extends State<MainApp> {
-  Future<List<dynamic>> dogImgs() async {
-    try {
-      final url = Uri.parse("https://dog.ceo/api/breeds/image/random/15");
-
-      final res = await http.get(url);
-      if (res.statusCode == 200) {
-        final data = jsonDecode(res.body);
-        debugPrint(data.toString());
-        return data["message"];
-      } else {
-        return [];
-      }
-    } catch (e) {
-      throw Exception(e);
-    }
-  }
-
-  @override
-  void initState() {
-    super.initState();
-    dogImgs();
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("DOG API")),
-      body: FutureBuilder(
-        future: dogImgs(),
-        builder: (context, snapshot) {
-          if (snapshot.hasData) {
-            return Center(child: Text("${snapshot.data}"));
-          } else if (snapshot.connectionState == ConnectionState.waiting) {
-            return Center(child: CircularProgressIndicator());
-          } else if (snapshot.hasError) {
-            return Center(child: Text("${snapshot.error}"));
-          } else {
-            return Center(child: Text("No DATA"));
-          }
-        },
+      appBar: AppBar(),
+      body: Column(
+        spacing: 8,
+        children: [
+          ElevatedButton(
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => GridImg()),
+              );
+            },
+            child: Text("Grid IMG"),
+          ),
+          ElevatedButton(
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => DropImg()),
+              );
+            },
+            child: Text("Drop IMG"),
+          ),
+        ],
       ),
     );
   }
